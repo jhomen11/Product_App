@@ -2,11 +2,17 @@ const express = require('express')
 const app = express()
 const sequelize = require('./database/db')
 
+//Puerto servidor
 const PORT = process.env.PORT || 4000
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.json('Hello World!')
 })
+
+app.use('/api/products', require('./routes/products'))
 
 app.listen(PORT, () => {
   console.log(`Servidor en el puerto ${PORT}`)
