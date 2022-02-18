@@ -8,7 +8,7 @@ Product.init({
     description: DataTypes.TEXT 
 },{
     sequelize,
-    modelName: "user"
+    modelName: "product"
 })
 
 module.exports = Product

@@ -14,11 +14,13 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', require('./routes/products'))
 
+
+
 app.listen(PORT, () => {
   console.log(`Servidor en el puerto ${PORT}`)
 
   //Conexion a la base de datos
-  sequelize.authenticate().then(()=>{
+  sequelize.sync({force: true}).then(()=>{
       console.log('Conexion a la Base de datos Ok')
   }).catch(error =>{
       console.log('Se he producido un error', error)
