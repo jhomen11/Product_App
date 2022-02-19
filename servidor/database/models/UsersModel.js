@@ -5,7 +5,7 @@ class User extends Model {}
 User.init({
     name: DataTypes.STRING,
     email:DataTypes.STRING,
-    timestamps: true
+    password: DataTypes.STRING
 },{
     sequelize,
     modelName: "user"

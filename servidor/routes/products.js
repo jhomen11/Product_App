@@ -13,6 +13,7 @@ router.post('/', (req, res)=>{
         res.json(product)
     })
 })
+
 //GET
 router.get('/', (req, res)=>{
     Product.findAll().then(products => {

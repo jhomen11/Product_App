@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/products', require('./routes/products'))
+app.use('/api/users', require('./routes/users'))
 
 
 
