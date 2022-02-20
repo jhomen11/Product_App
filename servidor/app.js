@@ -1,12 +1,15 @@
 const express = require('express')
-const app = express()
 const sequelize = require('./database/db')
+const cors = require('cors')
+
+const app = express()
 
 //Puerto servidor
 const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.json('Hello World!')
