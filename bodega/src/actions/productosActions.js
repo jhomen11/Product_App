@@ -4,16 +4,39 @@ import{
     AGREGAR_PRODUCTO_EXITO,
     AGREGAR_PRODUCTO_ERROR
 } from '../types'
+import saveAxios from '../config/axios'
+import Swal from 'sweetalert2'
 
 //Creando nuevos productos
-export const crearproductoAction = (producto) => {
-    return (despachador) => {
+export function crearproductoAction(producto) {
+    return async(despachador) => {
        despachador( agregarProducto()) //dispatch = despachador, manda a ejecutar las acciones
 
        try {
-           despachador( agregarProductoExito(producto))
+
+            //Insertar datos en la api
+            await saveAxios.post('/products', producto)
+
+            //Actualizar el state
+            despachador( agregarProductoExito(producto))
+
+            //Mostar alerta
+            Swal.fire(
+                'Correcto',
+                'El producto de ha agregado correctamente',
+                'success'
+            )
+
        } catch (error) {
+           console.log(error)
            despachador( agregarProductoError(true))
+
+           //Mostar alerta
+           Swal.fire({
+            icon:'error',
+            title:'Hubo un error',
+            text:'Ha ocurrido un Error, intente nuevamente'
+           })
        }
     }
 }

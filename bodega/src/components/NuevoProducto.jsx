@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 
 //Importar actions Redux
 import { crearproductoAction } from '../actions/productosActions'
@@ -7,11 +8,16 @@ import { crearproductoAction } from '../actions/productosActions'
 const NuevoProducto = () => {
 
   //State para guardar los datos del formulario
-  const [nombre, guardarNombre] = useState ('')
-  const [descripcion, guardarDescripcion] = useState ('')
-  const [precio, guardarPrecio] = useState ('')
+  const [name, guardarName] = useState ('')
+  const [description, guardarDescription] = useState ('')
+  const [price, guardarPrice] = useState ('')
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+
+  //Acceder al state del store
+  const error = useSelector(state => state.productos.error)
 
   //llamado de la funcion del action
   const agrgarProducto = (producto) => dispatch(crearproductoAction(producto))
@@ -20,15 +26,16 @@ const NuevoProducto = () => {
     e.preventDefault()
 
     //Validar formulario
-    if(nombre.trim() === '' || descripcion.trim() === '' || precio <= 0){
+    if(name.trim() === '' || description.trim() === '' || price <= 0){
       return
     }
     //Manejo de Errores
 
     //crear el producto
     agrgarProducto({
-      nombre, descripcion, precio
+      name, description, price
     })
+    navigate("/")
   }
 
   return (
@@ -49,9 +56,9 @@ const NuevoProducto = () => {
                     type="text"
                     className="form-control"
                     placeholder="Nombre Producto"
-                    name="nombre"
-                    value={nombre}
-                    onChange={e => guardarNombre(e.target.value)}
+                    name="name"
+                    value={name}
+                    onChange={e => guardarName(e.target.value)}
                   />
                 </div>
                 <div className="form-group mb-2">
@@ -61,9 +68,9 @@ const NuevoProducto = () => {
                     style={{ resize: "none" }}
                     id="descripcion"
                     placeholder="Descripción"
-                    name="descripcion"
-                    value={descripcion}
-                    onChange={e => guardarDescripcion(e.target.value)}
+                    name="description"
+                    value={description}
+                    onChange={e => guardarDescription(e.target.value)}
                   ></textarea>
                 </div>
                 <div className="form-group mb-2">
@@ -72,13 +79,14 @@ const NuevoProducto = () => {
                     type="number"
                     className="form-control"
                     placeholder="Precio Producto"
-                    name="precio"
-                    value={precio}
-                    onChange={e => guardarPrecio(Number(e.target.value))}
+                    name="price"
+                    value={price}
+                    onChange={e => guardarPrice(Number(e.target.value))}
                   />
                 </div>
                 <button className="btn btn-dark d-block w-100 mt-3">Agregar</button>
               </form>
+              {/* {error ? <p className='alert alert-danger text-center p-2 mt-3'>Ha ocurrido un Error</p> : null} */}
             </div>
           </div>
         </div>
