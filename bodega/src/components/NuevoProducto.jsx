@@ -1,4 +1,24 @@
+import { useDispatch, useSelector } from 'react-redux'
+//Importar actions Redux
+import { crearproductoAction } from '../actions/productosActions'
+
 const NuevoProducto = () => {
+
+  const dispatch = useDispatch()
+
+  //llamado de la funcion del action
+  const agrgarProducto = () => dispatch(crearproductoAction())
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    //Validar formulario
+
+    //Manejo de Errores
+
+    //crear el producto
+    agrgarProducto()
+  }
   return (
     <div>
       <div className="row justify-content-center">
@@ -8,7 +28,9 @@ const NuevoProducto = () => {
               <h2 className="text-center mb-4 fw-bold">
                 Agregar Nuevo Producto
               </h2>
-              <form action="">
+              <form 
+                onSubmit={handleSubmit}
+              >
                 <div className="form-group mb-2">
                   <label className="form-label" htmlFor="">Nombre del Producto</label>
                   <input
