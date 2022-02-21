@@ -136,13 +136,32 @@ const eliminarProductoError = () => ({
 
 //EDITAR PRODUCTO
 //Consiguiendo el producto a editar
-export const editarProductoAction = (producto) => {
+export const seleccionarEditarProducto = (producto) => {
     return (despachador) => {
-        despachador(productoAEditar(producto))
+        despachador(productoAEditarAction(producto))
     }
 }
 
-const productoAEditar = (producto) => ({
+const productoAEditarAction = (producto) => ({
     type:EDITAR_PRODUCTO,
+    payload: producto
+})
+
+//Modificar el producto en la api
+export const editarProductoAction = (producto) => {
+    return async(despachador) => {
+        despachador(editarProducto(producto))
+        
+        try {
+            const resp = await saveAxios.put(`/products/${producto.id}`, producto)
+            console.log(resp)
+        } catch (error) {
+            
+        }
+    }
+}
+
+const editarProducto = (producto) => ({
+    type: INICIO_EDITAR_PRODUCTO,
     payload: producto
 })

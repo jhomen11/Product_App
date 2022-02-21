@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 //Importar action Redux
-import { borrarProductoAction,editarProductoAction } from '../actions/productosActions'
+import { borrarProductoAction,seleccionarEditarProducto } from '../actions/productosActions'
 
 const Producto = ({producto}) => {
 
@@ -19,7 +19,7 @@ const Producto = ({producto}) => {
 
     //Edicion del producto
     const redireccionAEditar = (producto) =>{
-        dispatch(editarProductoAction(producto))
+        dispatch(seleccionarEditarProducto(producto))
         navigate(`/productos/editar/${producto.id}`)
     }
 
