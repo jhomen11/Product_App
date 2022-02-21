@@ -8,14 +8,18 @@ import{
     DESCARGA_PRODUCTOS_ERROR,
     ELIMINAR_PRODUCTO,
     ELIMINAR_PRODUCTO_EXITO,
-    ELIMINAR_PRODUCTO_ERROR
+    ELIMINAR_PRODUCTO_ERROR,
+    EDITAR_PRODUCTO,
+    INICIO_EDITAR_PRODUCTO,
+    EDITAR_PRODUCTO_EXITO,
+    EDITAR_PRODUCTO_ERROR
 } from '../types'
 
 import saveAxios from '../config/axios'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
-//Creando nuevos productos
+//CREAR PRODUCTO
 export function crearproductoAction(producto) {
     return async(despachador) => {
        despachador( agregarProducto()) //dispatch = despachador, manda a ejecutar las acciones
@@ -66,7 +70,7 @@ const agregarProductoError = (estado) => ({
 })
 
 
-//Mostar los productos
+//MOSTAR PRODUCTOS
 export const obetenerProductosAction = () => {
     return async (despachador) => {
         despachador(descargarProductos() )
@@ -100,7 +104,7 @@ const descargaProductoError = (estado) => ({
     payload: true
 })
 
-//Eliminar Productos
+//ELIMINAR PRODUCTO
 export const borrarProductoAction = (id)=>{
     return async (despachador) => {
         despachador(productoAEliminar(id) )
@@ -128,4 +132,17 @@ const eliminarProductoExito = () => ({
 const eliminarProductoError = () => ({
     type: ELIMINAR_PRODUCTO_ERROR,
     payload: true
+})
+
+//EDITAR PRODUCTO
+//Consiguiendo el producto a editar
+export const editarProductoAction = (producto) => {
+    return (despachador) => {
+        despachador(productoAEditar(producto))
+    }
+}
+
+const productoAEditar = (producto) => ({
+    type:EDITAR_PRODUCTO,
+    payload: producto
 })

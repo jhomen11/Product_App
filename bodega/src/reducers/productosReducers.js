@@ -8,13 +8,17 @@ import{
   DESCARGA_PRODUCTOS_ERROR,
   ELIMINAR_PRODUCTO,
   ELIMINAR_PRODUCTO_EXITO,
-  ELIMINAR_PRODUCTO_ERROR
+  ELIMINAR_PRODUCTO_ERROR,
+  EDITAR_PRODUCTO,
+  EDITAR_PRODUCTO_EXITO,
+  EDITAR_PRODUCTO_ERROR
 } from '../types'
 
 const stateinicial = {
   productos: [],
   error: null,
-  productoEliminado: null
+  productoEliminado: null,
+  productoEditar: null
 };
 
 export default function (state = stateinicial, action) {
@@ -51,6 +55,11 @@ export default function (state = stateinicial, action) {
             ...state,
             productos: state.productos.filter( producto => producto.id !== state.productoEliminado),
             productoEliminado: null
+          }
+        case EDITAR_PRODUCTO:
+          return{
+            ...state,
+            productoEditar: action.payload
           }
     default:
       return state;

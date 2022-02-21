@@ -1,18 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 //Importar action Redux
-import { borrarProductoAction } from '../actions/productosActions'
+import { borrarProductoAction,editarProductoAction } from '../actions/productosActions'
 
 const Producto = ({producto}) => {
 
     const dispatch = useDispatch()
 
-    //Conifrmacion de eliminar producto
+    const navigate = useNavigate()
+
+    //Conifirmacion de eliminar producto
     const eliminarProducto = (id) => {
 
         dispatch(borrarProductoAction(id))
+    }
+
+    //Edicion del producto
+    const redireccionAEditar = (producto) =>{
+        dispatch(editarProductoAction(producto))
+        navigate(`/productos/editar/${producto.id}`)
     }
 
   return (
@@ -26,9 +34,11 @@ const Producto = ({producto}) => {
         </h6>
         <p>Detalle: {producto.description}</p>
 
-        <Link to={'/productos/editar/:id'} className="btn btn-outline-secondary btn-sm me-2">
-          Editar
-        </Link>
+        <button 
+            className="btn btn-outline-secondary btn-sm me-2"
+            onClick={()=> redireccionAEditar(producto)}
+        >Editar
+        </button>
         <button 
             className="btn btn-outline-danger btn-sm"
             onClick={() => eliminarProducto(producto.id)}
