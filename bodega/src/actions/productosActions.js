@@ -5,7 +5,10 @@ import{
     AGREGAR_PRODUCTO_ERROR,
     INICIAR_DESCARGA_PRODUCTOS,
     DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR
+    DESCARGA_PRODUCTOS_ERROR,
+    ELIMINAR_PRODUCTO,
+    ELIMINAR_PRODUCTO_EXITO,
+    ELIMINAR_PRODUCTO_ERROR
 } from '../types'
 
 import saveAxios from '../config/axios'
@@ -63,7 +66,7 @@ const agregarProductoError = (estado) => ({
 })
 
 
-//Funcion para obetener los productos de la api
+//Mostar los productos
 export const obetenerProductosAction = () => {
     return async (despachador) => {
         despachador(descargarProductos() )
@@ -94,5 +97,35 @@ const descargaProductoExito = (productos) => ({
 //Se ejecuta si hay algún error
 const descargaProductoError = (estado) => ({
     type: DESCARGA_PRODUCTOS_ERROR,
+    payload: true
+})
+
+//Eliminar Productos
+export const borrarProductoAction = (id)=>{
+    return async (despachador) => {
+        despachador(productoAEliminar(id) )
+
+        try {
+            //eliminar producto de la api
+            await saveAxios.delete(`/products/${id}`)
+            despachador(eliminarProductoExito())
+        } catch (error) {
+            console.log(error)
+            despachador(eliminarProductoError())
+        }
+    }
+}
+
+const productoAEliminar = (id) =>({
+    type: ELIMINAR_PRODUCTO,
+    payload: id
+})
+
+const eliminarProductoExito = () => ({
+    type: ELIMINAR_PRODUCTO_EXITO    
+})
+
+const eliminarProductoError = () => ({
+    type: ELIMINAR_PRODUCTO_ERROR,
     payload: true
 })

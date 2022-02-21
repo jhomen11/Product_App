@@ -6,6 +6,7 @@ import { obetenerProductosAction } from "../actions/productosActions";
 import Producto from "./Producto";
 
 const Productos = () => {
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
