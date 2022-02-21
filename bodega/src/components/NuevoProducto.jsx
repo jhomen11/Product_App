@@ -17,7 +17,7 @@ const NuevoProducto = () => {
   const navigate = useNavigate()
 
   //Acceder al state del store
-  const error = useSelector(state => state.productos.error)
+  //const error = useSelector(state => state.productos.error)
 
   //llamado de la funcion del action
   const agrgarProducto = (producto) => dispatch(crearproductoAction(producto))
