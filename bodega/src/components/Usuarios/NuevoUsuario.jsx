@@ -1,4 +1,9 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+//importar Actios Redux
+import { crearusuarioActions } from '../../actions/usuarioActions'
+
 const NuevoUsuario = () => {
 
   //State para guardar los datos del formulario
@@ -6,6 +11,25 @@ const NuevoUsuario = () => {
   const [lastname, guardarLastName] = useState ('')
   const [email, guardarEmail] = useState ('')
   const [password, guardarPassword] = useState ('')
+
+  const dispatch = useDispatch()
+
+  //llamado de la funcion del action
+  const agregarUsuario = (usuario) => {dispatch(crearusuarioActions(usuario))}
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    //Validar formulario
+    if(name.trim() === '' || lastname.trim() === '' || email.trim() === '' || password.trim() === '' ){
+      return
+    }
+
+    //crear el usuario
+    agregarUsuario({
+      name, lastname, email, password
+    })
+  }
 
   return (
     <div>
@@ -17,7 +41,7 @@ const NuevoUsuario = () => {
                 Registro de Usuarios
               </h2>
               <form 
-                //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
               >
                 <div className="form-group mb-3">
                   <input
