@@ -35,7 +35,7 @@ const NuevoProducto = () => {
     agrgarProducto({
       name, description, price
     })
-    navigate("/")
+    navigate("/productos")
   }
 
   return (
