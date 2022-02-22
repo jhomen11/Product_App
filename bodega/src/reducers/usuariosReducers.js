@@ -17,6 +17,16 @@ export default function foo( state = stateinicial, action) {
             return{
                 ...state
             }
+        case AGREGAR_USUARIO_EXITO:
+            return{
+                ...state,
+                usuarios: [...state.usuarios, action.payload]
+            }
+        case AGREGAR_USUARIO_ERROR:
+            return{
+                ...state,
+                error: action.payload
+            }
         default:
             return state
     }
