@@ -21,7 +21,7 @@ const stateinicial = {
   productoEditar: null
 };
 
-export default function (state = stateinicial, action) {
+export default function foo(state = stateinicial, action) {
   switch (action.type) {
     case AGREGAR_PRODUCTO:
     case INICIAR_DESCARGA_PRODUCTOS:
@@ -36,6 +36,7 @@ export default function (state = stateinicial, action) {
     case AGREGAR_PRODUCTO_ERROR:
     case DESCARGA_PRODUCTOS_ERROR:
     case ELIMINAR_PRODUCTO_ERROR:
+    case EDITAR_PRODUCTO_ERROR:
       return {
         ...state,
         error: action.payload,
@@ -60,6 +61,17 @@ export default function (state = stateinicial, action) {
           return{
             ...state,
             productoEditar: action.payload
+          }
+        case EDITAR_PRODUCTO_EXITO:
+          return{
+            ...state,
+            productoEditar: null,
+
+            //si el id del producto que estamos leyendo es igual al que viene en el paylod entonces
+            //el producto actual se le asigna el producto completo
+            productos: state.productos.map(producto => 
+              producto.id === action.payload.id ? producto = action.payload : producto
+            )
           }
     default:
       return state;

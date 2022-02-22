@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 //Importar action Redux
@@ -26,13 +26,13 @@ const Producto = ({producto}) => {
   return (
     <div className="col-12 col-sm-6 col-md-6 col-lg-4 my-3">
     <div className="card">
-      <img src="..." className="card-img-top" alt="..." />
+      <img src={require(`../img/img1.jpeg`)} className="card-img-top" alt="..." />
       <div className="card-body">
-        <h5 className="card-title">{producto.name}</h5>
-        <h6 className="card-text fw-light">
+        <h4 className="card-title">{producto.name}</h4>
+        <h5 className="card-text">
           Precio: <span>$ {producto.price}</span>
-        </h6>
-        <p>Detalle: {producto.description}</p>
+        </h5>
+        <p className='fs-6'>Detalle: {producto.description}</p>
 
         <button 
             className="btn btn-outline-secondary btn-sm me-2"

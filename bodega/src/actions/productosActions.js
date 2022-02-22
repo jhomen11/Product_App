@@ -17,7 +17,7 @@ import{
 
 import saveAxios from '../config/axios'
 import Swal from 'sweetalert2'
-import axios from 'axios'
+
 
 //CREAR PRODUCTO
 export function crearproductoAction(producto) {
@@ -153,15 +153,23 @@ export const editarProductoAction = (producto) => {
         despachador(editarProducto(producto))
         
         try {
-            const resp = await saveAxios.put(`/products/${producto.id}`, producto)
-            console.log(resp)
+            await saveAxios.put(`/products/${producto.id}`, producto)
+            //console.log(resp)
+            despachador(editarProductoExito(producto))
         } catch (error) {
-            
+            console.log(error)
+            despachador(editarProductoError())
         }
     }
 }
 
-const editarProducto = (producto) => ({
-    type: INICIO_EDITAR_PRODUCTO,
+const editarProducto = () => ({
+    type: INICIO_EDITAR_PRODUCTO
+})
+const editarProductoExito = (producto) => ({
+    type: EDITAR_PRODUCTO_EXITO,
     payload: producto
+})
+const editarProductoError = () => ({
+    type: EDITAR_PRODUCTO_ERROR
 })

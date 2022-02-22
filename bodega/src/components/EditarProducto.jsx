@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 
 //Importar action redux
 import { editarProductoAction} from '../actions/productosActions'
@@ -13,6 +15,9 @@ const EditarProducto = () => {
   
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+
 
   //Producto a editar
   const productoEditar = useSelector(state => state.productos.productoEditar)
@@ -30,7 +35,9 @@ const EditarProducto = () => {
   const handleSubmit = (e) =>{
     e.preventDefault()
 
-  
+    dispatch(editarProductoAction(producto))
+
+    navigate('/')
   }
 
   //console.log(producto)
