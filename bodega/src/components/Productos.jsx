@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 //Importar action Redux
 import { obetenerProductosAction } from "../actions/productosActions";
@@ -24,6 +25,11 @@ const Productos = () => {
       <div className="row">
         <div className="col">
           <h2 className="text-center mb-3">Productos</h2>
+        </div>
+        <div className="row justify-content-center">
+          <div className="col-6">
+            <Link to={'/productos/nuevo'} className=" btn btn-outline-dark w-100">Agregar productos</Link>
+          </div>
         </div>
         <div className="row">
           {productos.length === 0

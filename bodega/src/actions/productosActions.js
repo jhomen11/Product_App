@@ -156,6 +156,13 @@ export const editarProductoAction = (producto) => {
             await saveAxios.put(`/products/${producto.id}`, producto)
             //console.log(resp)
             despachador(editarProductoExito(producto))
+
+            //Mostar alerta
+            Swal.fire(
+                'Correcto',
+                'El producto de ha agregado correctamente',
+                'success'
+            )
         } catch (error) {
             console.log(error)
             despachador(editarProductoError())
