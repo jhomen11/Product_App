@@ -35,7 +35,7 @@ const EditarProducto = () => {
 
     dispatch(editarProductoAction(producto));
 
-    navigate("/productos");
+    navigate("../Products/productos");
   };
 
   //console.log(producto)
