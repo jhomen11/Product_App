@@ -12,7 +12,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Have the apache and mysql server up on the computer and create a database named "products" to make a successful connection with the DB.\
+Have the apache and mysql server up on the computer and create a database named "products" to make a successful connection with the DB
 
 
 Runs the app in the development mode.\
