@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 //importar Actios Redux
 import { crearusuarioActions } from '../../actions/usuarioActions'
@@ -13,6 +14,8 @@ const NuevoUsuario = () => {
   const [password, guardarPassword] = useState ('')
 
   const dispatch = useDispatch()
+
+  const navigate = useNavigate( )
 
   //llamado de la funcion del action
   const agregarUsuario = (usuario) => {dispatch(crearusuarioActions(usuario))}
@@ -29,10 +32,11 @@ const NuevoUsuario = () => {
     agregarUsuario({
       name, lastname, email, password
     })
+    navigate("/")
   }
 
   return (
-    <div>
+    <div className='mt-5'>
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">

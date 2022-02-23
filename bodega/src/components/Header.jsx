@@ -26,7 +26,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/productos"} className="nav-link">
+              <Link to={"Products/productos"} className="nav-link">
                 Productos
               </Link>
             </li>
@@ -45,21 +45,6 @@ const Header = () => {
         </div>
       </div>
     </nav>
-    // <nav className="navbar navbar-expand-lg navbar-dark bg-light justify-content-between">
-    //   <div className="container">
-    //     <h1>
-    //       <Link to={"/"} className="navbar-brand text-dark">
-    //         Bodega React, Redux
-    //       </Link>
-    //     </h1>
-    //     <div>
-    //       <Link to="/usuarios/nuevo" className="btn btn-dark me-2">
-    //         Registrate
-    //       </Link>
-    //       <button className="btn btn-secondary">Inicia Sesión</button>
-    //     </div>
-    //   </div>
-    // </nav>
   );
 };
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 //Importar action Redux
-import { obetenerProductosAction } from "../actions/productosActions";
+import { obetenerProductosAction } from "../../actions/productosActions";
 import Producto from "./Producto";
 
 const Productos = () => {
@@ -21,7 +21,7 @@ const Productos = () => {
   const productos = useSelector((state) => state.productos.productos);
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row">
         <div className="col">
           <h2 className="text-center mb-3">Productos</h2>

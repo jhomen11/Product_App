@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 //Importar action Redux
-import { borrarProductoAction,seleccionarEditarProducto } from '../actions/productosActions'
+import { borrarProductoAction,seleccionarEditarProducto } from '../../actions/productosActions'
 
 const Producto = ({producto}) => {
 
@@ -26,7 +26,7 @@ const Producto = ({producto}) => {
   return (
     <div className="col-12 col-sm-6 col-md-6 col-lg-4 my-3">
     <div className="card">
-      <img src={require(`../img/img1.jpeg`)} className="card-img-top" alt="..." />
+      <img src={require(`../../img/img1.jpeg`)} className="card-img-top" alt="..." />
       <div className="card-body">
         <h4 className="card-title">{producto.name}</h4>
         <h5 className="card-text">

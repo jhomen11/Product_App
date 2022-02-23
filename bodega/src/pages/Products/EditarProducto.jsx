@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 
 //Importar action redux
-import { editarProductoAction } from "../actions/productosActions";
+import { editarProductoAction } from "../../actions/productosActions";
 
 const EditarProducto = () => {
   //State para guardar los datos del formulario
@@ -41,7 +41,7 @@ const EditarProducto = () => {
   //console.log(producto)
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mt-4">
         <div className="col-md-5">
           <div className="card">
             <div className="card-body">
@@ -104,4 +104,4 @@ const EditarProducto = () => {
   );
 };
 
-export default EditarProducto;
+export default EditarProducto

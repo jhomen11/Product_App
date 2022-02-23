@@ -3,7 +3,7 @@ import { useDispatch, } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 
 //Importar actions Redux
-import { crearproductoAction } from '../actions/productosActions'
+import { crearproductoAction } from '../../actions/productosActions'
 
 const NuevoProducto = () => {
 
@@ -39,7 +39,7 @@ const NuevoProducto = () => {
 
   return (
     <div>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mt-5">
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
